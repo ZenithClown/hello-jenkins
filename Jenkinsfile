@@ -23,7 +23,10 @@ pipeline {
                 // bat 'python main.py'
                 // * use `sh` when host machine is linux
                 // ! Pipeline script > Step = sh: Shell Script > Script = python <filename>.py
-                sh 'python main.py'
+                // ! linux mint 20.2 py3 can be accessed via `python3 <filename>.py`
+                // TODO - understand how to point to a python environment using jenkins
+                // * Possible Solution: https://stackoverflow.com/questions/41246161
+                sh 'python3 main.py'
             }
         }
 
