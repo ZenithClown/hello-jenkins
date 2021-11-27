@@ -18,8 +18,12 @@ pipeline {
             steps {
                 // ? URL and Credentials for connecting to github (remote) repository is inserted twice
                 git changelog: false, credentialsId: 'ZenithClown', poll: false, url: 'git@github.com:ZenithClown/hello-jenkins.git'
+                // * use `bat` when host machine in windows
                 // ! Pipeline script > Step = bat: Windows Batch Script > Script = python <filename>.py
-                bat 'python main.py'
+                // bat 'python main.py'
+                // * use `sh` when host machine is linux
+                // ! Pipeline script > Step = sh: Shell Script > Script = python <filename>.py
+                sh 'python main.py'
             }
         }
 
