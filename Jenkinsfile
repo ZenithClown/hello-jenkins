@@ -15,14 +15,18 @@ pipeline {
 
         stage('Build') {
             // TODO - understand freestyle job vs pipeline job syntax
-            // ? URL and Credentials for connecting to github (remote) repository is inserted twice
-            git changelog: false, credentialsId: 'ZenithClown', poll: false, url: 'git@github.com:ZenithClown/hello-jenkins.git'
-            // ! Pipeline script > Step = bat: Windows Batch Script > Script = python <filename>.py
-            bat 'python main.py'
+            steps {
+                // ? URL and Credentials for connecting to github (remote) repository is inserted twice
+                git changelog: false, credentialsId: 'ZenithClown', poll: false, url: 'git@github.com:ZenithClown/hello-jenkins.git'
+                // ! Pipeline script > Step = bat: Windows Batch Script > Script = python <filename>.py
+                bat 'python main.py'
+            }
         }
 
         stage('completion') {
-            echo 'pipeline executed succesfully'
+            steps {
+                echo 'pipeline executed succesfully'
+            }
         }
     }
 }
